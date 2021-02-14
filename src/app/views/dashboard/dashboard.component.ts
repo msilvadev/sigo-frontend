@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities';
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
 import { DashboardService } from '../../services/dashboard.service';
-import { ProcessType } from '../../domain/process/ProcessType';
+import { ProcessType } from '../../domain/gpi-manager/ProcessType';
 import { map } from 'rxjs/operators';
-import { ProcessStatus } from '../../domain/process/ProcessStatus';
+import { ProcessStatus } from '../../domain/gpi-manager/ProcessStatus';
 import 'chartjs-plugin-labels';
 @Component({
   templateUrl: 'dashboard.component.html'
