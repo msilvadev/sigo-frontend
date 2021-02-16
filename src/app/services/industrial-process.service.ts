@@ -12,6 +12,10 @@ export class IndustrialProcessService {
   constructor(private http: HttpClient) { }
 
   listIndustrialProcess(): Observable<Array<IndustrialProcess>> {
-    return this.http.get<Array<IndustrialProcess>>(environment.baseUrl + "/industrial-process")
+    return this.http.get<Array<IndustrialProcess>>(environment.baseUrl + "/industrial-process");
+  }
+
+  saveIndustrialProcess(industrialProcessToSave: IndustrialProcess): Observable<IndustrialProcess> {
+    return this.http.post<IndustrialProcess>(environment.baseUrl + "/industrial-process", industrialProcessToSave);
   }
 }

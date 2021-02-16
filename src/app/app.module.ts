@@ -42,6 +42,8 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
 import { HttpClientModule } from '@angular/common/http';
 import { GpiModule } from './views/gpi/gpi.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   imports: [
     BrowserModule,
@@ -57,7 +59,8 @@ import { GpiModule } from './views/gpi/gpi.module';
     TabsModule.forRoot(),
     ChartsModule,
     HttpClientModule,
-    GpiModule
+    GpiModule,
+    NgbModule
   ],
   declarations: [
     AppComponent,
