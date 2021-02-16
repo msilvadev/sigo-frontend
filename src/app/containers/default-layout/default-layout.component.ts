@@ -12,4 +12,9 @@ export class DefaultLayoutComponent {
   toggleMinimize(e) {
     this.sidebarMinimized = e;
   }
+
+  logout(){
+    // TODO: implementar logout da aplicação
+    console.log('logout test')
+  }
 }

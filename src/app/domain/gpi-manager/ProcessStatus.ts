@@ -1,7 +1,7 @@
 export enum ProcessStatus {
   'Iniciado' = 0,
-  'Em processamento' = 1,
-  'Finalizado com sucesso' = 2,
-  'Processo em atraso' = 3,
-  'Falha no processo' = 4
+  'Processando' = 1,
+  'Sucesso' = 2,
+  'Em atraso' = 3,
+  'Falha' = 4
 }

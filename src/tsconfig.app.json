@@ -9,6 +9,9 @@
     "paths": {
       "@angular/*": [
         "../node_modules/@angular/*"
+      ],
+      "primeng/*": [
+        "node_modules/primeng-lts/*"
       ]
     }
   },
