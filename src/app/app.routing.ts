@@ -55,6 +55,10 @@ export const routes: Routes = [
         loadChildren: () => import('./views/gpi/gpi.module').then(m => m.GpiModule)
       },
       {
+        path: 'standard',
+        loadChildren: () => import('./views/standardmanager/standardmanager.module').then(m => m.StandardManagerModule)
+      },
+      {
         path: 'base',
         loadChildren: () => import('./views/base/base.module').then(m => m.BaseModule)
       },

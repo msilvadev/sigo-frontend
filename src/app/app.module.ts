@@ -44,6 +44,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { GpiModule } from './views/gpi/gpi.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
+import { StandardManagerModule } from './views/standardmanager/standardmanager.module';
 @NgModule({
   imports: [
     BrowserModule,
@@ -60,6 +61,7 @@ import { FormsModule } from '@angular/forms';
     ChartsModule,
     HttpClientModule,
     GpiModule,
+    StandardManagerModule,
     NgbModule
   ],
   declarations: [

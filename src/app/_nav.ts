@@ -13,11 +13,11 @@ export const navItems: INavData[] = [
     children: [
       {
         name: 'Gestão de Normas',
-        url: '/gn-manager',
+        url: '/standard',
         icon: 'icon-layers'
       },
       {
-        name: 'Consultorias e Assessoria',
+        name: 'Consultorias e Assessorias',
         url: '/gca-manager',
         icon: 'icon-people'
       },

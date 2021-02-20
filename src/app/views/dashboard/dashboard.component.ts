@@ -6,13 +6,15 @@ import { ProcessType } from '../../domain/gpi-manager/ProcessType';
 import { map } from 'rxjs/operators';
 import { ProcessStatus } from '../../domain/gpi-manager/ProcessStatus';
 import 'chartjs-plugin-labels';
+import { Standard } from '../../domain/standard-manager/Standard';
+import { StandardType } from '../../domain/standard-manager/StandardType';
+import { StandardManagerDashboardReport } from '../../domain/standard-manager/StandardManagerDashboardReport';
 @Component({
   templateUrl: 'dashboard.component.html'
 })
 export class DashboardComponent implements OnInit {
 
   public gpiManagerDashboardReport: Map<ProcessType, Array<number>> = new Map<ProcessType, Array<number>>();
-
   // Doughnut Gestão de Processos Industriais
   public doughnutChartLabels: Array<string> = [ProcessStatus[4], ProcessStatus[0], ProcessStatus[1], ProcessStatus[2], ProcessStatus[3]];
   public doughnutChartData: Array<number>;
@@ -28,7 +30,12 @@ export class DashboardComponent implements OnInit {
       textMargin: 4
     }
   }
-  
+
+  public standardManager: StandardManagerDashboardReport;
+  public standardManagerDoughnutChartLabels: string[] = [StandardType[1], StandardType[2], StandardType[3]];
+  public standardManagerDoughnutChartData: number[] = [];
+  public standardManagerDoughnutChartType = 'doughnut';
+
   radioModel: string = 'Month';
 
   // mainChart
@@ -62,7 +69,7 @@ export class DashboardComponent implements OnInit {
       mode: 'index',
       position: 'nearest',
       callbacks: {
-        labelColor: function(tooltipItem, chart) {
+        labelColor: function (tooltipItem, chart) {
           return { backgroundColor: chart.data.datasets[tooltipItem.datasetIndex].borderColor };
         }
       }
@@ -75,7 +82,7 @@ export class DashboardComponent implements OnInit {
           drawOnChartArea: false,
         },
         ticks: {
-          callback: function(value: any) {
+          callback: function (value: any) {
             return value.charAt(0);
           }
         }
@@ -130,7 +137,7 @@ export class DashboardComponent implements OnInit {
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
-  constructor(private dashboardService: DashboardService) {}
+  constructor(private dashboardService: DashboardService) { }
 
   ngOnInit(): void {
     // generate random values for mainChart
@@ -141,22 +148,34 @@ export class DashboardComponent implements OnInit {
     }
 
     //TODO: AQUI DEVEREMOS CHAMAR O WEB API QUE IRÁ CENTRALIZAR ESSAS INFOS...
-    this.loadGPIReport();
+    this._loadGPIReport();
+    this._loadStandardManagerReport();
   }
 
-  private loadGPIReport(): void {
+  private _loadGPIReport(): void {
     this.dashboardService.getGpiManagerDashboardReport().pipe(
       map(data => {
-         for (var key in data) {
-           this.doughnutChartData = new Array<number>();
-           this.doughnutChartData.push(data[key].failedQuantity);
-           this.doughnutChartData.push(data[key].initiatedQuantity);
-           this.doughnutChartData.push(data[key].processingQuantity);
-           this.doughnutChartData.push(data[key].successQuantity);
-           this.doughnutChartData.push(data[key].overdueQuantity);
-           
-           this.gpiManagerDashboardReport.set(ProcessType[key], this.doughnutChartData);
+        for (var key in data) {
+          this.doughnutChartData = new Array<number>();
+          this.doughnutChartData.push(data[key].failedQuantity);
+          this.doughnutChartData.push(data[key].initiatedQuantity);
+          this.doughnutChartData.push(data[key].processingQuantity);
+          this.doughnutChartData.push(data[key].successQuantity);
+          this.doughnutChartData.push(data[key].overdueQuantity);
+
+          this.gpiManagerDashboardReport.set(ProcessType[key], this.doughnutChartData);
         }
       })).subscribe();
+  }
+
+  private _loadStandardManagerReport(): void {
+    this.dashboardService.getStandardManagerDashboardReport().pipe(
+      map(data => {
+        this.standardManager = data;
+        this.standardManagerDoughnutChartData.push(data.industrialQuantity);
+        this.standardManagerDoughnutChartData.push(data.environmentalQuantity);
+        this.standardManagerDoughnutChartData.push(data.defaultQuantity);
+      })
+    ).subscribe();
   }
 }

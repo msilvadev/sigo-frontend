@@ -4,4 +4,6 @@ export class Standard {
   public description: String;
   public start: Date;
   public end: Date;
+
+  public standardTypeAsString?: string;
 }
