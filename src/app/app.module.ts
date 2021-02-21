@@ -45,6 +45,8 @@ import { GpiModule } from './views/gpi/gpi.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { StandardManagerModule } from './views/standardmanager/standardmanager.module';
+import { GcaComponent } from './views/gca/gca.component';
+import { GcaModule } from './views/gca/gca.module';
 @NgModule({
   imports: [
     BrowserModule,
@@ -62,6 +64,7 @@ import { StandardManagerModule } from './views/standardmanager/standardmanager.m
     HttpClientModule,
     GpiModule,
     StandardManagerModule,
+    GcaModule,
     NgbModule
   ],
   declarations: [

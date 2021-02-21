@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
-import { WidgetsComponent } from './widgets.component';
+import { GcaComponent } from './gca.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: WidgetsComponent,
+    component: GcaComponent,
     data: {
-      title: 'Widgets'
+      title: 'Gestão de Consultoria e Assessoria'
     }
   }
 ];
@@ -17,4 +16,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class WidgetsRoutingModule {}
+export class GcaRoutingModule {}
