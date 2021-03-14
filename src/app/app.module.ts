@@ -43,10 +43,13 @@ import { ChartsModule } from 'ng2-charts';
 import { HttpClientModule } from '@angular/common/http';
 import { GpiModule } from './views/gpi/gpi.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StandardManagerModule } from './views/standardmanager/standardmanager.module';
 import { GcaComponent } from './views/gca/gca.component';
 import { GcaModule } from './views/gca/gca.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ErrorInterceptor } from './helpers/error.interceptor';
+import { JwtInterceptor } from './helpers/jwt.interceptor';
 @NgModule({
   imports: [
     BrowserModule,
@@ -65,7 +68,8 @@ import { GcaModule } from './views/gca/gca.module';
     GpiModule,
     StandardManagerModule,
     GcaModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule
   ],
   declarations: [
     AppComponent,
@@ -78,7 +82,10 @@ import { GcaModule } from './views/gca/gca.module';
   providers: [{
     provide: LocationStrategy,
     useClass: HashLocationStrategy
-  }],
+  },
+  { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+  { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+  ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

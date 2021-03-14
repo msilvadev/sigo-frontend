@@ -12,6 +12,7 @@ export class NavbarsComponent implements OnInit, AfterViewChecked {
   set isCollapsed(value) {
     this._isCollapsed = value;
   }
+
   get isCollapsed() {
     if (this.collapseRef) {
       // temp fix for "overflow: hidden"
