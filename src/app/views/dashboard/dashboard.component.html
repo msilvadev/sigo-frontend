@@ -8,11 +8,8 @@
         <div class="card-body">
           <div class="chart-wrapper">
             <div id="chart-container">
-              <canvas baseChart class="chart"
-              [data]="prop.value"
-              [labels]="doughnutChartLabels"
-              [chartType]="doughnutChartType"
-              [options]="chartOptions"></canvas>
+              <canvas baseChart class="chart" [data]="prop.value" [labels]="doughnutChartLabels"
+                [chartType]="doughnutChartType" [options]="chartOptions"></canvas>
             </div>
           </div>
         </div>
@@ -20,8 +17,9 @@
     </div>
   </div>
 
-  <div class="row" *ngIf="standardManager !== undefined">
-    <div class="col-sm-6 col-lg-16">
+  <div class="row">
+    <div class="col-sm-6 col-lg-16" *ngIf="standardManager !== undefined">
+
       <div class="card">
         <div class="card-header">
           <a href="/#/standard">Gestão de Normas</a>
@@ -29,20 +27,16 @@
         <div class="card-body">
           <div class="chart-wrapper">
             <div id="chart-container">
-              <canvas baseChart class="chart"
-              [data]="standardManagerDoughnutChartData"
-              [labels]="standardManagerDoughnutChartLabels"
-              [chartType]="standardManagerDoughnutChartType"
-              [options]="chartOptions"></canvas>
+              <canvas baseChart class="chart" [data]="standardManagerDoughnutChartData"
+                [labels]="standardManagerDoughnutChartLabels" [chartType]="standardManagerDoughnutChartType"
+                [options]="chartOptions"></canvas>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="row" *ngIf="gcaManager !== undefined">
-    <div class="col-sm-6 col-lg-16">
+    <div class="col-sm-6 col-lg-16" *ngIf="gcaManager !== undefined">
       <div class="card">
         <div class="card-header">
           <a href="/#/gca">Gestão de Consultaria e Assessoria</a>
@@ -50,16 +44,14 @@
         <div class="card-body">
           <div class="chart-wrapper">
             <div id="chart-container">
-              <canvas baseChart class="chart"
-              [data]="gcaManagerDoughnutChartData"
-              [labels]="gcaManagerDoughnutChartLabels"
-              [chartType]="gcaManagerDoughnutChartType"
-              [options]="chartOptions"></canvas>
+              <canvas baseChart class="chart" [data]="gcaManagerDoughnutChartData"
+                [labels]="gcaManagerDoughnutChartLabels" [chartType]="gcaManagerDoughnutChartType"
+                [options]="chartOptions"></canvas>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
+
 </div>
