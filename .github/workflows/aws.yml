@@ -1,4 +1,6 @@
-name: deploy-app-on-s3on:
+name: deploy-app-on-s3
+
+on:
   pull_request:
     branches: [main]
     types: [closed]
